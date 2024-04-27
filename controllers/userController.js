@@ -26,7 +26,7 @@ module.exports = {
             res.status(500).json(err);
         }
     },
-    // CREATE a single User
+    // CREATE a new User
     async createUser(req, res) {
         try {
             const user = await User.create(req.body);
@@ -35,7 +35,7 @@ module.exports = {
             res.status(500).json(err);
         }
     },
-    // UPDATE a single User
+    // UPDATE a User
     async updateUser(req, res) {
         try {
             const updatedUser = await User.findByIdAndUpdate(
@@ -49,7 +49,7 @@ module.exports = {
             res.status(500).json(err);
         }
     },
-    // DELETE a single User
+    // DELETE a User
     async deleteUser(req, res) {
         try {
             const user = await User.findById(req.params.userId);
