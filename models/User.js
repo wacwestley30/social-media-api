@@ -23,14 +23,14 @@ const userSchema = new Schema(
         },
         thoughts: [{
             type: Schema.Types.ObjectId,
-            ref: 'Thought' // check casing ex. thought vs Thought
+            ref: 'Thought'
         }],
         friends: [{
             type: Schema.Types.ObjectId,
-            ref: 'User' // check casing ex. user vs User
+            ref: 'User'
         }]
     },
-    {   // Check to see if virtuals need to be in JSON. School work says yes but does this app need it?
+    {
         toJSON: {
             virtuals: true,
         },
@@ -42,6 +42,6 @@ userSchema.virtual('friendCount').get(function() {
     return this.friends.length;
 });
 
-const User = model('User', userSchema); // class work lowercase but why? if TROUBLESHOOTING check this
+const User = model('User', userSchema);
 
 module.exports = User;

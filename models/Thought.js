@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-// Reaction Schema
 const reactionSchema = new Schema({
   reactionId: {
     type: Schema.Types.ObjectId,
@@ -24,7 +23,6 @@ const reactionSchema = new Schema({
   },
 });
 
-// Thought Schema
 const thoughtSchema = new Schema(
   {
     thoughtText: {
@@ -54,11 +52,10 @@ const thoughtSchema = new Schema(
   }
 );
 
-// Virtual for reactionCount
 thoughtSchema.virtual('reactionCount').get(function () {
   return this.reactions.length;
 });
 
-const Thought = model('Thought', thoughtSchema); // Again classwork lowercase if TROUBLESHOOTING try looking into this
+const Thought = model('Thought', thoughtSchema);
 
 module.exports = Thought;
