@@ -13,7 +13,7 @@ module.exports = {
     // GET a single User
     async getSingleUser(req, res) {
         try {
-            const user = await User.findById(req.params.userId)
+            const user = await User.findOne({ _id: req.params.userId })
                 .populate('thoughts')
                 .populate('friends');
 
@@ -38,8 +38,8 @@ module.exports = {
     // UPDATE a User
     async updateUser(req, res) {
         try {
-            const updatedUser = await User.findByIdAndUpdate(
-                req.params.userId,
+            const updatedUser = await User.findOneAndUpdate(
+                { _id: req.params.userId},
                 req.body,
                 { new: true }
             );
@@ -68,7 +68,10 @@ module.exports = {
     // Adds a friend to User's friend list
     async addFriend(req, res) {
         try {
-            const user = await User.findById(req.params.userId);
+            const user = await User.findOne({ _id: req.params.userId })
+            .select('-__v');
+            // console.log('This is user:', user);
+
             const friendId = req.params.friendId;
 
             if (!user) {
@@ -83,7 +86,8 @@ module.exports = {
             await user.save();
             res.json({ message: 'Friend added successfully' });
         } catch (err) {
-            res.status(500).json(err);
+            console.error('Error adding friend:', err);
+            res.status(500).json({ message: 'An error occurred while adding a friend' });
         }
     },
     // Removes friend from User's friend list
