@@ -100,7 +100,7 @@ module.exports = {
                 return res.status(404).json({ message: 'No user found with this ID' });
             }
 
-            if (user.friends.includes(friendId)) {
+            if (!user.friends.includes(friendId)) {
                 return res.status(400).json({ message: 'This user is not a friend' });
             }
 
