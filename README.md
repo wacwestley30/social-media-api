@@ -6,6 +6,8 @@
 
 This project utilizes Express, MongoDB, and Mongoose. Until now, I have been employing Sequelize and MySQL to construct relational databases. With this Social Media API, I successfully developed my inaugural document-based API using MongoDB. Additionally, I acquired insight into how Mongoose generates schemas, enhancing my overall database proficiency.
 
+https://drive.google.com/file/d/1--F6aq2_oGG4vFNs8OQX1TkFzihcdgnN/view?usp=sharing
+
 ## Table of Contents
 
 - [Installation](#installation)
